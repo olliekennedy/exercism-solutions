@@ -4,23 +4,32 @@ export class Triangle {
   }
 
   isEquilateral() {
-    if (this.isNotTriangle()) return false
-    return (this.sides[0] == this.sides[1]) && (this.sides[1] == this.sides[2]);
+    return (this.sides[0] == this.sides[1]) &&
+           (this.sides[1] == this.sides[2]) &&
+           !this.isNotTriangle();
   }
 
   isIsosceles() {
     if (this.isNotTriangle()) return false;
-    if ((this.sides[0] == this.sides[1]) || (this.sides[1] == this.sides[2]) || (this.sides[0] == this.sides[2])) return true;
+    if ((this.sides[0] == this.sides[1]) ||
+        (this.sides[1] == this.sides[2]) ||
+        (this.sides[0] == this.sides[2]))
+        return true;
     return false;
   }
 
   isScalene() {
-    return (!(this.isNotTriangle()) && !this.isIsosceles() && !this.isEquilateral());
+    return !this.isNotTriangle() &&
+           !this.isIsosceles() &&
+           !this.isEquilateral();
   }
 
   isNotTriangle() {
-    if (((this.sides[0] + this.sides[1]) < this.sides[2]) || ((this.sides[1] + this.sides[2]) < this.sides[0]) || ((this.sides[2] + this.sides[0]) < this.sides[1])) return true
-    return ((this.sides[0] == 0) || (this.sides[1] == 0) || (this.sides[2] == 0));
-
+    return (this.sides[0] == 0) ||
+           (this.sides[1] == 0) ||
+           (this.sides[2] == 0) ||
+          ((this.sides[0] + this.sides[1]) < this.sides[2]) ||
+          ((this.sides[1] + this.sides[2]) < this.sides[0]) ||
+          ((this.sides[2] + this.sides[0]) < this.sides[1]);
   }
 }

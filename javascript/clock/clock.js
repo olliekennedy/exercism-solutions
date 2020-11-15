@@ -4,16 +4,24 @@
 //
 
 export class Clock {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(hours, minutes=0) {
+    this.d = new Date(2020, 11, 11, hours, minutes, 0, 0)
+  }
+
+  padded(int) {
+    return ('' + int).length == 2 ? '' + int : '0' + int;
   }
 
   toString() {
-    throw new Error('Remove this statement and implement this function');
+    var h = this.padded(this.d.getHours());
+    var m = this.padded(this.d.getMinutes());
+    return `${h}:${m}`
   }
 
-  plus() {
-    throw new Error('Remove this statement and implement this function');
+  plus(int) {
+    // this.d = new Date(this.d.getTime() + int*60000);
+    // return this.d
+    // return this.d.setMinutes((this.d.getMinutes() + int)) ;
   }
 
   minus() {

@@ -1,35 +1,31 @@
 export class Triangle {
-  constructor(side1, side2, side3) {
-    this.sides = [side1, side2, side3];
+  constructor(a, b, c) {
+    this.s = [a, b, c];
   }
 
   isEquilateral() {
-    return (this.sides[0] == this.sides[1]) &&
-           (this.sides[1] == this.sides[2]) &&
-           !this.isNotTriangle();
+    return (this.s[0] == this.s[1]) &&
+      (this.s[1] == this.s[2]) &&
+      this.isTriangle();
   }
 
   isIsosceles() {
-    if (this.isNotTriangle()) return false;
-    if ((this.sides[0] == this.sides[1]) ||
-        (this.sides[1] == this.sides[2]) ||
-        (this.sides[0] == this.sides[2]))
-        return true;
-    return false;
+    return this.isTriangle() &&
+      ((this.s[0] == this.s[1]) ||
+      (this.s[1] == this.s[2]) ||
+      (this.s[0] == this.s[2]));
   }
 
   isScalene() {
-    return !this.isNotTriangle() &&
-           !this.isIsosceles() &&
-           !this.isEquilateral();
+    return this.isTriangle() &&
+      !this.isIsosceles() &&
+      !this.isEquilateral();
   }
 
-  isNotTriangle() {
-    return (this.sides[0] == 0) ||
-           (this.sides[1] == 0) ||
-           (this.sides[2] == 0) ||
-          ((this.sides[0] + this.sides[1]) < this.sides[2]) ||
-          ((this.sides[1] + this.sides[2]) < this.sides[0]) ||
-          ((this.sides[2] + this.sides[0]) < this.sides[1]);
+  isTriangle() {
+    return !([this.s[0], this.s[1], this.s[2]].includes(0) ||
+      ((this.s[0] + this.s[1]) < this.s[2]) ||
+      ((this.s[1] + this.s[2]) < this.s[0]) ||
+      ((this.s[2] + this.s[0]) < this.s[1]));
   }
 }

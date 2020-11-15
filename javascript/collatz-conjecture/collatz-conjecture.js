@@ -1,8 +1,7 @@
-//
-// This is only a SKELETON file for the 'Collatz Conjecture' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
-export const steps = () => {
-  throw new Error("Remove this statement and implement this function");
+export const steps = (n) => {
+  if (n < 1) throw Error('Only positive numbers are allowed');
+  for (var i = 0; n != 1; i++) {
+    (n % 2 == 0) ? n /= 2 : n = (n * 3) + 1;
+  };
+  return i;
 };

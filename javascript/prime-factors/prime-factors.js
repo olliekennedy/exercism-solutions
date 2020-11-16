@@ -1,17 +1,13 @@
 export const primeFactors = (int) => {
-  var lastTest = int < 100000 ? int+1 : Math.pow(Math.sqrt(int), 1.2)
-  var factors = []
-  var left = int
-  var i = 2
-  while (i < lastTest) {
-    if (left % i == 0) {
-      factors.push(i)
-      left /= i
+  var factors = [];
+  var i = 2;
+  while (int > 1) {
+    if (int % i == 0) {
+      factors.push(i);
+      int /= i;
     } else {
-      i++
-    }
-  }
-  return factors
+      i++;
+    };
+  };
+  return factors;
 };
-
-93819012551

@@ -3,6 +3,11 @@
 // convenience to get you started writing code faster.
 //
 
-export const isPangram = () => {
-  throw new Error("Remove this statement and implement this function");
+export const isPangram = (str) => {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  var str_chars = str.toLowerCase().split('');
+  alphabet.forEach(char => {
+    if (str_chars.includes(char) == false) return false;
+  })
+  return str_chars.length > 1
 };

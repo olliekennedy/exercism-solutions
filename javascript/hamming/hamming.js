@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Hamming' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export const compute = (l,r) => {
   if (l.length != r.length) {
     if (l.length == 0) throw Error('left strand must not be empty');

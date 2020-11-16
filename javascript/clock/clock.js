@@ -13,22 +13,25 @@ export class Clock {
   }
 
   toString() {
+    // console.log(this.d)
     var h = this.padded(this.d.getHours());
     var m = this.padded(this.d.getMinutes());
-    return `${h}:${m}`
+    return `${h}:${m}`;
   }
 
   plus(int) {
-    // this.d = new Date(this.d.getTime() + int*60000);
+    this.d = new Date(this.d.getTime() + int*60000);
+    return this;
     // return this.d
     // return this.d.setMinutes((this.d.getMinutes() + int)) ;
   }
 
-  minus() {
-    throw new Error('Remove this statement and implement this function');
+  minus(int) {
+    this.d = new Date(this.d.getTime() - int*60000);
+    return this;
   }
 
-  equals() {
-    throw new Error('Remove this statement and implement this function');
+  equals(clock) {
+    return this.d.toISOString().substr(11, 8) == clock.d.toISOString().substr(11, 8);;
   }
 }

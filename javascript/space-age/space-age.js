@@ -1,9 +1,6 @@
-export const age = (planet, seconds) => {
-  // var divider =
-  return Number(((seconds * (ORBS['earth'] / ORBS[planet])) / (EARTH_SECONDS)).toFixed(2))
+export const age = (p, s) => {
+  return Number((s / (31557600 * ORBS[p])).toFixed(2))
 };
-
-export const EARTH_SECONDS = 31557600
 
 export const ORBS = {
   'mercury' : 0.2408467,

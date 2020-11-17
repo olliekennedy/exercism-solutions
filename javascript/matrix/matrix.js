@@ -4,15 +4,16 @@
 //
 
 export class Matrix {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(m) {
+    this.m = m.split(/\n/);
   }
 
   get rows() {
-    throw new Error("Remove this statement and implement this function");
+    return this.m.map(row => {return row.split(' ').map(char => {return parseInt(char)})});
   }
 
   get columns() {
-    throw new Error("Remove this statement and implement this function");
+    var transpose = this.m[0].map((col, i) => this.m.map(row => row[i]));
+    return transpose.rows
   }
 }

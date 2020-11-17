@@ -3,6 +3,13 @@
 // convenience to get you started writing code faster.
 //
 
-export const isIsogram = () => {
-  throw new Error("Remove this statement and implement this function");
+export const isIsogram = (str) => {
+  var used_chars = []
+  var clean_str = str.replace(/\W/g, '')
+  clean_str.replace(/\W/g, '').split('').forEach(char => {
+    if (!used_chars.includes(char.toLowerCase())) {
+      used_chars.push(char.toLowerCase())
+    }
+  })
+  return used_chars.length == clean_str.length
 };

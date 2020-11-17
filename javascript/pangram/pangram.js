@@ -1,3 +1,3 @@
-export const isPangram = (str, char = '') => {
-  return 'abcdefghijklmnopqrstuvwxyz'.split('').every(function(char) {return str.toLowerCase().includes(char)}, char)
+export const isPangram = (str) => {
+  return [...'abcdefghijklmnopqrstuvwxyz'].every(char => str.toLowerCase().includes(char));
 };

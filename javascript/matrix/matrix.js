@@ -13,7 +13,15 @@ export class Matrix {
   }
 
   get columns() {
-    var transpose = this.m[0].map((col, i) => this.m.map(row => row[i]));
-    return transpose.rows
+    var output = []
+    if (this.m.length === 1) return this.m.forEach(el => output.push([parseInt(el)]))
+    for (var i = 0; i < this.m.length; i++) {
+      output.push([])
+      for (var j = 0; j < this.m.length; j++) {
+        output[i].push(this.m[j][i])
+      }
+    }
+    return output
+
   }
 }

@@ -1,9 +1,15 @@
 class ResistorColor {
     int colorCode(String color) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        for (var i = 0; i < colors().length; i++) {
+          if (colors()[i] == color) {
+            return i;
+          }
+        }
+        return 100;
     }
 
     String[] colors() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        String[] arr = {"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"};
+        return arr;
     }
 }

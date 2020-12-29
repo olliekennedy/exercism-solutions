@@ -5,7 +5,7 @@ class ResistorColor {
             return i;
           }
         }
-        return 100;
+        return -1;
     }
 
     String[] colors() {

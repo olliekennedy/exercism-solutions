@@ -8,8 +8,7 @@ class ResistorColorDuo {
                 }
             }
         }
-        String code = String.join("", codes);
-        return Integer.valueOf(code);
+        return Integer.valueOf(String.join("", codes));
     }
 
     String[] colors() {

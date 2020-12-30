@@ -5,6 +5,7 @@ class ResistorColorDuo {
             for (var j = 0; j < colors().length; j++) {
                 if (colors[i] == colors()[j]) {
                   codes[i] = String.valueOf(j);
+                  break;
                 }
             }
         }

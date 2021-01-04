@@ -2,13 +2,14 @@ import java.util.*;
 
 class RnaTranscription {
 
+    Map<String, String> pairs = Map.of("C","G", "G","C", "T","A", "A","U");
+
     String transcribe(String dnaStrand) {
-      Map<Character, Character> pairs = Map.of('C','G', 'G','C', 'T','A', 'A','U');
-      char[] output = new char[dnaStrand.length()];
-      for (var i = 0; i < dnaStrand.length(); i++) {
-        output[i] = pairs.get(dnaStrand.charAt(i));
+      StringBuilder strand = new StringBuilder(dnaStrand);
+      for (var i = 0; i < strand.length(); i++) {
+        strand.replace(i,i+1,pairs.get(strand.substring(i,i+1)));
       }
-      return new String(output);
+      return new String(strand);
     }
 
 }

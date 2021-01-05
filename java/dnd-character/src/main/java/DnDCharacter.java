@@ -1,39 +1,86 @@
-class DnDCharacter {
+import java.util.Arrays;
 
-    int ability() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+class DnDCharacter {
+  int strength;
+  int dexterity;
+  int constitution;
+  int intelligence;
+  int wisdom;
+  int charisma;
+
+    DnDCharacter() {
+      strength = randomRoll();
+      dexterity = randomRoll();
+      constitution = randomRoll();
+      intelligence = randomRoll();
+      wisdom = randomRoll();
+      charisma = randomRoll();
+    }
+
+    int randomRoll() {
+      int[] rolls = new int[4];
+      for (int i = 0; i < rolls.length; i++) {
+        rolls[i] = (int)Math.ceil(Math.random() * 6);
+      }
+      Arrays.sort(rolls);
+      return rolls[1] + rolls[2] + rolls[3];
     }
 
     int modifier(int input) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      System.out.println(input);
+      int minus = input - 10;
+      System.out.println(minus);
+      double divide = (double)minus / 2;
+      System.out.println(divide);
+      int round;
+      round = (int)Math.floor(divide);
+      return round;
     }
 
     int getStrength() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return this.strength;
     }
 
     int getDexterity() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return dexterity;
     }
 
     int getConstitution() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return constitution;
     }
 
     int getIntelligence() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return intelligence;
     }
 
     int getWisdom() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return wisdom;
     }
 
     int getCharisma() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return charisma;
+    }
+
+    int ability() {
+      int rand = (int)Math.ceil(Math.random() * 6);
+      if (rand == 1) {
+        return getWisdom();
+      } else if (rand == 2) {
+        return getCharisma();
+      } else if (rand == 3) {
+        return getStrength();
+      } else if (rand == 4) {
+        return getDexterity();
+      } else if (rand == 5) {
+        return getIntelligence();
+      } else if (rand == 6) {
+        return getConstitution();
+      }
+      return 0;
     }
 
     int getHitpoints() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+      return 10 + modifier(getConstitution());
     }
 
 }

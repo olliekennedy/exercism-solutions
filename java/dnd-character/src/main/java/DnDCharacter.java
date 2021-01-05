@@ -1,44 +1,44 @@
 import java.util.Arrays;
 
 class DnDCharacter {
-  int strength;
-  int dexterity;
-  int constitution;
-  int intelligence;
-  int wisdom;
-  int charisma;
+    int strength, dexterity, constitution, intelligence, wisdom, charisma;
 
     DnDCharacter() {
-      strength = randomRoll();
-      dexterity = randomRoll();
-      constitution = randomRoll();
-      intelligence = randomRoll();
-      wisdom = randomRoll();
-      charisma = randomRoll();
+      strength = sumAllButMin(rolls(4));
+      dexterity = sumAllButMin(rolls(4));
+      constitution = sumAllButMin(rolls(4));
+      intelligence = sumAllButMin(rolls(4));
+      wisdom = sumAllButMin(rolls(4));
+      charisma = sumAllButMin(rolls(4));
     }
 
-    int randomRoll() {
-      int[] rolls = new int[4];
-      for (int i = 0; i < rolls.length; i++) {
-        rolls[i] = (int)Math.ceil(Math.random() * 6);
+    int randOneToSix() {
+      return (int)Math.ceil(Math.random() * 6);
+    }
+
+    int[] rolls(int num) {
+      int[] rolls = new int[num];
+      for (int i = 0; i < num; i++) {
+        rolls[i] = randOneToSix();
       }
+      return rolls;
+    }
+
+    int sumAllButMin(int[] rolls) {
       Arrays.sort(rolls);
-      return rolls[1] + rolls[2] + rolls[3];
+      int total = 0;
+      for (int i = 1; i < rolls.length; i++) {
+        total += rolls[i];
+      }
+      return total;
     }
 
     int modifier(int input) {
-      System.out.println(input);
-      int minus = input - 10;
-      System.out.println(minus);
-      double divide = (double)minus / 2;
-      System.out.println(divide);
-      int round;
-      round = (int)Math.floor(divide);
-      return round;
+      return (int)Math.floor((double)(input - 10) / 2);
     }
 
     int getStrength() {
-      return this.strength;
+      return strength;
     }
 
     int getDexterity() {
@@ -62,21 +62,20 @@ class DnDCharacter {
     }
 
     int ability() {
-      int rand = (int)Math.ceil(Math.random() * 6);
-      if (rand == 1) {
-        return getWisdom();
-      } else if (rand == 2) {
-        return getCharisma();
-      } else if (rand == 3) {
-        return getStrength();
-      } else if (rand == 4) {
-        return getDexterity();
-      } else if (rand == 5) {
-        return getIntelligence();
-      } else if (rand == 6) {
-        return getConstitution();
+      switch (randOneToSix()) {
+        case 1:
+          return getWisdom();
+        case 2:
+          return getCharisma();
+        case 3:
+          return getStrength();
+        case 4:
+          return getDexterity();
+        case 5:
+          return getIntelligence();
+        default:
+          return getConstitution();
       }
-      return 0;
     }
 
     int getHitpoints() {

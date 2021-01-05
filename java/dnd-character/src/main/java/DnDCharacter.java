@@ -1,36 +1,12 @@
 import java.util.Arrays;
 
 class DnDCharacter {
+  
     int strength, dexterity, constitution, intelligence, wisdom, charisma;
 
     DnDCharacter() {
-      strength = sumAllButMin(rolls(4));
-      dexterity = sumAllButMin(rolls(4));
-      constitution = sumAllButMin(rolls(4));
-      intelligence = sumAllButMin(rolls(4));
-      wisdom = sumAllButMin(rolls(4));
-      charisma = sumAllButMin(rolls(4));
-    }
-
-    int randOneToSix() {
-      return (int)Math.ceil(Math.random() * 6);
-    }
-
-    int[] rolls(int num) {
-      int[] rolls = new int[num];
-      for (int i = 0; i < num; i++) {
-        rolls[i] = randOneToSix();
-      }
-      return rolls;
-    }
-
-    int sumAllButMin(int[] rolls) {
-      Arrays.sort(rolls);
-      int total = 0;
-      for (int i = 1; i < rolls.length; i++) {
-        total += rolls[i];
-      }
-      return total;
+      DnDCharCreate creator = new DnDCharCreate();
+      creator.create(this);
     }
 
     int modifier(int input) {
@@ -61,6 +37,10 @@ class DnDCharacter {
       return charisma;
     }
 
+    private int randOneToSix() {
+      return (int)Math.ceil(Math.random() * 6);
+    }
+
     int ability() {
       switch (randOneToSix()) {
         case 1:
@@ -81,5 +61,54 @@ class DnDCharacter {
     int getHitpoints() {
       return 10 + modifier(getConstitution());
     }
+
+}
+
+class DnDCharCreate {
+
+  public void create(DnDCharacter newChar) {
+    newChar.strength = initialiseAttribute();
+    newChar.dexterity = initialiseAttribute();
+    newChar.constitution = initialiseAttribute();
+    newChar.intelligence = initialiseAttribute();
+    newChar.wisdom = initialiseAttribute();
+    newChar.charisma = initialiseAttribute();
+  }
+
+  private int initialiseAttribute() {
+    return sumAllButMin(rolls(4));
+  }
+
+  private int[] rolls(int num) {
+    Die sixer = new Die(6);
+    int[] rolls = new int[num];
+    for (int i = 0; i < num; i++) {
+      rolls[i] = sixer.roll();
+    }
+    return rolls;
+  }
+
+  private int sumAllButMin(int[] rolls) {
+    Arrays.sort(rolls);
+    int total = 0;
+    for (int i = 1; i < rolls.length; i++) {
+      total += rolls[i];
+    }
+    return total;
+  }
+
+}
+
+class Die {
+
+  private int sides;
+
+  Die(int sides) {
+    this.sides = sides;
+  }
+
+  public int roll() {
+    return (int)Math.ceil(Math.random() * sides);
+  }
 
 }

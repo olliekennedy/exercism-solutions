@@ -6,19 +6,11 @@ class Grains {
         if (square < 1 || square > 64) {
           throw new IllegalArgumentException("square must be between 1 and 64");
         }
-        BigInteger two = new BigInteger("2");
-        return two.pow(square - 1);
+        return BigInteger.TWO.pow(square - 1);
     }
 
     BigInteger grainsOnBoard() {
-      BigInteger total = new BigInteger("0");
-      for (int i = 1; i < 65; i++) {
-        total = total.add(grainsOnSquare(i));
-      }
-      return total;
-
-      // BigInteger total = grainsOnSquare(65).subtract(new BigInteger("1"));
-      // return total;
+      return grainsOnSquare(64).multiply(BigInteger.TWO).subtract(BigInteger.ONE);
     }
 
 }

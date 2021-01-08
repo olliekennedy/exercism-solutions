@@ -3,11 +3,14 @@ public class Hamming {
     public Hamming(String leftStrand, String rightStrand) {
       if (leftStrand.length() != rightStrand.length()) {
         if (leftStrand.length() == 0) {
-          throw new IllegalArgumentException("left strand must not be empty.");
+          throw new IllegalArgumentException(
+            "left strand must not be empty.");
         } else if (rightStrand.length() == 0) {
-          throw new IllegalArgumentException("right strand must not be empty.");
+          throw new IllegalArgumentException(
+            "right strand must not be empty.");
         } else {
-        throw new IllegalArgumentException("leftStrand and rightStrand must be of equal length.");
+          throw new IllegalArgumentException(
+            "leftStrand and rightStrand must be of equal length.");
         }
       }
       l = leftStrand.toCharArray();

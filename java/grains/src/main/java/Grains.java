@@ -10,7 +10,9 @@ class Grains {
     }
 
     BigInteger grainsOnBoard() {
-      return grainsOnSquare(64).multiply(BigInteger.TWO).subtract(BigInteger.ONE);
+      return grainsOnSquare(64)
+        .multiply(BigInteger.TWO)
+        .subtract(BigInteger.ONE);
     }
 
 }
